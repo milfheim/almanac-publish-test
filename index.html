@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Almanac O' Adventures</title>
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="night" aria-hidden="true"></div>
+<div class="glow" aria-hidden="true"></div>
+
+<header class="top">
+  <a class="brand" href="#" data-home>
+    <span class="seal" aria-hidden="true"></span>
+    <span class="brand-text">Almanac <em>O'</em> Adventures</span>
+    <span class="pack" id="pack" hidden></span>
+  </a>
+  <div class="tools">
+    <label class="search">
+      <span class="pxicon" data-icon="search" aria-hidden="true"></span>
+      <input id="q" type="search" placeholder="Search" autocomplete="off" spellcheck="false" aria-label="Search this book">
+      <kbd>/</kbd>
+    </label>
+    <div class="seg" role="group" aria-label="Card size">
+      <button data-size="s" aria-label="Small cards"><span class="pxicon" data-icon="grid9"></span></button>
+      <button data-size="m" aria-label="Medium cards"><span class="pxicon" data-icon="grid4"></span></button>
+      <button data-size="l" aria-label="Large cards"><span class="pxicon" data-icon="grid2"></span></button>
+    </div>
+  </div>
+</header>
+
+<main class="main" id="main">
+  <div class="page">
+    <div class="stitches" aria-hidden="true"></div>
+    <section class="hero" id="hero"></section>
+    <div class="chips-wrap"><div class="chips" id="chips" role="toolbar" aria-label="Filter by mod"></div></div>
+    <div class="grid" id="grid" data-size="m"></div>
+    <div class="empty" id="empty" hidden>
+      <span class="pxicon big" data-icon="search" aria-hidden="true"></span>
+      <p>Nothing matches that.</p><button class="paper-btn" id="clear">Clear filters</button>
+    </div>
+  </div>
+  <footer class="foot" id="foot"></footer>
+</main>
+
+<aside class="panel" id="panel" aria-label="Filters" aria-hidden="true">
+  <div class="panel-head">
+    <div><div class="eyebrow" id="pEyebrow"></div><h2 id="pTitle"></h2></div>
+    <button class="paper-btn icon" id="pClose" aria-label="Close panel"><span class="pxicon" data-icon="right"></span></button>
+  </div>
+  <div class="panel-body">
+    <div class="field">
+      <div class="label">Sort</div>
+      <div class="seg wide" role="group" aria-label="Sort">
+        <button data-sort="name" aria-pressed="true">A-Z</button>
+        <button data-sort="mod">By mod</button>
+        <button data-sort="za">Z-A</button>
+      </div>
+    </div>
+    <div class="field">
+      <div class="label">Show</div>
+      <div class="seg wide" role="group" aria-label="Show">
+        <button data-show="all" aria-pressed="true">All</button>
+        <button data-show="on">Enabled</button>
+        <button data-show="off">Disabled</button>
+      </div>
+    </div>
+    <div class="field grow">
+      <div class="label row"><span>Mods</span><button class="link" id="modsAll">Select all</button></div>
+      <label class="search small">
+        <span class="pxicon" data-icon="search" aria-hidden="true"></span>
+        <input id="modQ" type="search" placeholder="Find a mod" autocomplete="off" aria-label="Find a mod">
+      </label>
+      <div class="mod-list" id="modList"></div>
+      <p class="hint">Tip: press on a box and drag down to tick several.</p>
+    </div>
+  </div>
+</aside>
+
+<nav class="rail" id="rail" aria-label="Books"></nav>
+
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Viewer" hidden>
+  <div class="v-glow" aria-hidden="true"></div>
+  <canvas id="gl"></canvas>
+  <img class="flat" id="flat" alt="">
+  <div class="slides" id="slides" hidden></div>
+  <div class="v-top">
+    <div class="v-title">
+      <div class="eyebrow" id="vBook"></div>
+      <h1 id="vName"></h1>
+      <div class="v-mod" id="vMod"></div>
+    </div>
+    <div class="v-actions">
+      <button class="paper-btn icon" id="vAnim" aria-label="Pause" title="Pause (Space)"><span class="pxicon" data-icon="pause"></span></button>
+      <button class="paper-btn icon" id="vSpin" aria-label="Turn by itself" title="Turn by itself (T)"><span class="pxicon" data-icon="spin"></span></button>
+      <button class="paper-btn icon" id="vOrtho" aria-label="Flat view" title="Flat view (O)"><span class="pxicon" data-icon="cube"></span></button>
+      <button class="paper-btn icon" id="vReset" aria-label="Reset view" title="Reset view (R)"><span class="pxicon" data-icon="reset"></span></button>
+      <button class="paper-btn icon" id="vShot" aria-label="Save picture" title="Save picture"><span class="pxicon" data-icon="camera"></span></button>
+      <button class="paper-btn icon red" id="vClose" aria-label="Close" title="Close (Esc)"><span class="pxicon" data-icon="close"></span></button>
+    </div>
+  </div>
+  <button class="nav prev paper-btn" id="vPrev" aria-label="Previous"><span class="pxicon" data-icon="left"></span></button>
+  <button class="nav next paper-btn" id="vNext" aria-label="Next"><span class="pxicon" data-icon="right"></span></button>
+  <div class="v-info" id="vInfo"></div>
+  <div class="v-notes" id="vNotes"></div>
+  <div class="v-hint" id="vHint">Drag to turn · Right-drag to move · Scroll to zoom · Double-click to reset</div>
+  <div class="v-load" id="vLoad" hidden><span class="dots"><i></i><i></i><i></i></span><span id="vLoadText">Loading</span></div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/engine.js"></script>
+<script src="assets/app.js"></script>
+<script src="custom.js"></script>
+<script src="data.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+AOA.texture("minecraft_textures_entity_fish_tropical_a_pattern_1",{"w":32,"h":32,"mips":false},["data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAgUlEQVR4XmMYKPAfCPDa/R8NUMuhHz58+M8wGADBEKCXIxlxWYTuQkYgYBi24O/fv/CEgS1ukMWQ1VIjQJhghsAM/vfvH4a5MDFky0GpmRopmgVk2+fPn4nyDLHqGEbBkA2BQVNMjqahAQmB0fgfTXijITAaAqMhMBoCoyEwYkMAAO5FUnHs/D3EAAAAAElFTkSuQmCC"]);

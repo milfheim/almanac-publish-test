@@ -1,0 +1,1 @@
+AOA.texture("minecraft_textures_entity_enderman_enderman_eyes",{"w":64,"h":32,"mips":false},["data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAgCAYAAACinX6EAAAAaUlEQVR4XmMYBaMhMBoCoyEwGgKjITAaAqMhMBoCoyEwGgKjIYAtBB5U/vp/huHXfxANk8cmNhp6oyEwGgKjITAaAqMhMBoCoyEwGgKjITAaAqMhMBoCoyEwGgKjITAaAqMhMBoCQyIEAIJaEtME04a2AAAAAElFTkSuQmCC"]);
